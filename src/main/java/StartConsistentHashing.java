@@ -3,11 +3,11 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-public class Main {
+public class StartConsistentHashing {
     public static void main(String[] args) {
         // 启动RMI注册表
         try {
-            LocateRegistry.createRegistry(1099);
+            LocateRegistry.createRegistry(9999);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
@@ -22,10 +22,10 @@ public class Main {
 
         // 将远程对象绑定到RMI注册表
         try {
-            Naming.rebind("rmi://localhost:1099/ConsistentHashing", remoteObject);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
+            Naming.rebind("rmi://localhost:9999/ConsistentHashing", remoteObject);
         } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
     }
